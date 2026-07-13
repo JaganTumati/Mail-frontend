@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>TempMail — Personal Disposable Email</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="app">
+
+    <!-- ── Header ──────────────────────────────────────────────── -->
+    <header class="header">
+        <div class="logo">
+            <span class="logo-icon">📬</span>
+            <span class="logo-text">TempMail</span>
+        </div>
+        <p class="tagline">Private · Disposable · Instant</p>
+    </header>
+
+    <!-- ── Main Content ────────────────────────────────────────── -->
+    <main class="main">
+
+        <!-- Address Box -->
+        <section class="address-box">
+            <div class="address-label">Your Temporary Email Address</div>
+            <div class="address-row">
+                <span id="currentAddress" class="address-text">Generating…</span>
+                <button class="btn-icon" onclick="copyAddress()" title="Copy address">📋</button>
+            </div>
+            <div class="address-meta">
+                <span id="expiresInfo" class="expires-text"></span>
+                <span id="unreadBadge" class="badge hidden">0 unread</span>
+            </div>
+            <div class="address-actions">
+                <button class="btn btn-primary"  onclick="generateInbox()">🔄 New Address</button>
+                <button class="btn btn-refresh"  onclick="refreshEmails()">↻ Refresh</button>
+                <button class="btn btn-danger"   onclick="deleteInbox()">🗑 Delete Inbox</button>
+            </div>
+        </section>
+
+        <!-- Search Bar -->
+        <section class="search-bar">
+            <input type="text" id="searchInput"
+                   placeholder="Search by sender or subject…"
+                   oninput="debounceSearch()"/>
+        </section>
+
+        <!-- Split Panel: Email List + Viewer -->
+        <div class="panel">
+
+            <!-- Left: Email List -->
+            <aside class="email-list" id="emailList">
+                <div class="empty-state" id="emptyState">
+                    <span>📭</span>
+                    <p>No emails yet.<br/>Share your address and wait for mail!</p>
+                </div>
+            </aside>
+
+            <!-- Right: Email Viewer -->
+            <article class="email-viewer" id="emailViewer">
+                <div class="viewer-placeholder">
+                    <span>📩</span>
+                    <p>Select an email to read it here</p>
+                </div>
+            </article>
+
+        </div><!-- /panel -->
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden"></div>
+
+</div><!-- /app -->
+
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

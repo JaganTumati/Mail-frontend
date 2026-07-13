@@ -1,0 +1,19 @@
+# Netlify config.
+#
+# OPTION 1 (what config.js does by default): call Railway backend directly
+# via its full URL. Requires ALLOWED_ORIGINS on the backend to include your
+# Netlify URL — already handled by CorsConfig.java.
+#
+# OPTION 2 (avoids CORS entirely — uncomment below if you prefer this):
+# Proxy /api/* requests through Netlify to your Railway backend so the
+# browser only ever talks to your own domain. If you use this, also set
+# window.API_BASE_URL = ""; in config.js (relative paths).
+#
+# [[redirects]]
+#   from = "/api/*"
+#   to = "https://YOUR-APP-NAME.up.railway.app/api/:splat"
+#   status = 200
+#   force = true
+
+[build]
+  publish = "."
