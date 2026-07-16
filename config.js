@@ -6,4 +6,5 @@
  *
  * This is the ONE line to change when your Railway URL changes.
  */
-window.API_BASE_URL = "https://YOUR-APP-NAME.up.railway.app";
+//window.API_BASE_URL = "https://YOUR-APP-NAME.up.railway.app";
+window.API_BASE_URL = "https://your-app.up.railway.app";
